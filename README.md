@@ -1,0 +1,1 @@
+A Haxe port of Walaber's C++ soft body physics engine. See the jellyPhysics-samples package for usage.

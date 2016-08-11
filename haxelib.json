@@ -1,0 +1,11 @@
+{
+  "name": "jellyPhysics",
+  "url" : "https://creativecoggames.com",
+  "license": "MIT",
+  "tags": ["game", "physics"],
+  "description": "Haxe port of Walaber's JellyPhysics.",
+  "version": "1.0",
+  "releasenote": "Initial release.",
+  "contributors": ["apfelbeck"],
+  "dependencies": {"lime"}
+}
