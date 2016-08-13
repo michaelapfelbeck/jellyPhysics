@@ -4,7 +4,7 @@
   "license": "MIT",
   "tags": ["game", "physics"],
   "description": "Haxe port of Walaber's JellyPhysics.",
-  "version": "1.0",
+  "version": "1.0.0",
   "releasenote": "Initial release.",
   "contributors": ["apfelbeck"],
   "dependencies": {"lime":""}
