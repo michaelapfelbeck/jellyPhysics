@@ -5,6 +5,7 @@
   "tags": ["game", "physics"],
   "description": "Haxe port of Walaber's JellyPhysics.",
   "version": "1.0.0",
+  "classpath": "jellyPhysics/",
   "releasenote": "Initial release.",
   "contributors": ["apfelbeck"],
   "dependencies": {}
