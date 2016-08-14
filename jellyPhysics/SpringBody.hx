@@ -3,7 +3,8 @@ package jellyPhysics;
 import jellyPhysics.Body;
 import jellyPhysics.ClosedShape;
 import jellyPhysics.InternalSpring;
-import lime.math.Vector2;
+import jellyPhysics.math.VectorTools;
+import jellyPhysics.math.Vector2;
 
 /**
  * ...
@@ -146,7 +147,7 @@ class SpringBody extends Body
     // springDamp: spring damping
     private function AddInternalSpring(pointA:Int, pointB:Int, springK:Float, springDamp:Float){
         var distVector:Vector2 = VectorTools.Subtract(PointMasses[pointB].Position, PointMasses[pointA].Position);
-        var dist:Float = distVector.length;
+        var dist:Float = distVector.length();
         var spring:InternalSpring = new InternalSpring(pointA, pointB, dist, springK, springDamp);
         Springs.push(spring);
     }

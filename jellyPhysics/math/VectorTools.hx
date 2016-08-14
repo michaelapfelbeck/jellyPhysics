@@ -1,6 +1,6 @@
-package jellyPhysics;
-import lime.math.Vector2;
-import lime.math.Vector4;
+package jellyPhysics.math;
+import jellyPhysics.math.Vector2;
+import jellyPhysics.math.Vector3;
 import jellyPhysics.Intersection;
 
 /**
@@ -38,7 +38,7 @@ class VectorTools
     
     public static function Distance(vectorA: Vector2, vectorB:Vector2):Float
     {
-        return new Vector2(vectorA.x - vectorB.x, vectorA.y - vectorB.y).length;
+        return new Vector2(vectorA.x - vectorB.x, vectorA.y - vectorB.y).length();
     }
     
     public static function DistanceSquared(vectorA: Vector2, vectorB:Vector2):Float
@@ -63,8 +63,8 @@ class VectorTools
         return dot >= 0.0;
     }
     
-    public static function Vec4FromVec2(vector:Vector2, ?z:Float):Vector4{
-        return new Vector4(vector.x, vector.y, (null == z)?0: z, 0);
+    public static function Vec4FromVec2(vector:Vector2, ?z:Float):Vector3{
+        return new Vector3(vector.x, vector.y, (null == z)?0: z);
     }
     
     /// see if 2 line segments intersect. (line AB collides with line CD)
@@ -110,7 +110,7 @@ class VectorTools
         BtoA.x = posA.x - posB.x;
         BtoA.y = posA.y - posB.y;
 
-        var dist:Float = BtoA.length;
+        var dist:Float = BtoA.length();
         if (dist > 0.0001)
         {
             BtoA.x /= dist;

@@ -3,8 +3,9 @@ package jellyPhysics;
 import haxe.Constraints.Function;
 import jellyPhysics.ClosedShape;
 import jellyPhysics.PointOnEdge;
-import lime.math.Vector2;
-import lime.math.Vector4;
+import jellyPhysics.math.VectorTools;
+import jellyPhysics.math.Vector2;
+import jellyPhysics.math.Vector3;
 import jellyPhysics.PointMassRef;
 
 /**
@@ -281,8 +282,8 @@ class Body
         //E = edge vector
         var E:Vector2 = new Vector2(ptB.x - ptA.x, ptB.y - ptA.y);
         
-        var edgeLength:Float = E.length;
-        E.normalize(1.0);
+        var edgeLength:Float = E.length();
+        E.normalize();
         
         //normal
         var n:Vector2 = VectorTools.GetPerpendicular(E);
@@ -311,14 +312,14 @@ class Body
         else
         {
             // point lies somewhere on the line segment.
-            var toP4:Vector4 = VectorTools.Vec4FromVec2(toP);
+            var toP3:Vector3 = VectorTools.Vec4FromVec2(toP);
 
-            var E4:Vector4 = VectorTools.Vec4FromVec2(E);
+            var E3:Vector3 = VectorTools.Vec4FromVec2(E);
 
             //dist = Math.Abs(Vector3.Cross(toP3, E3).Z);
-            E4 = toP4.crossProduct(E4);
+            E3 = toP3.crossProduct(E3);
 
-            dist = Math.abs(E4.z);
+            dist = Math.abs(E3.z);
             hitPt.x = ptA.x + (E.x * x);
             hitPt.y = ptA.y + (E.y * x);
             edgeD = x / edgeLength;
@@ -352,8 +353,8 @@ class Body
         //E = edge vector
         var E:Vector2 = new Vector2(ptB.x - ptA.x, ptB.y - ptA.y);
         
-        var edgeLength:Float = E.length;
-        E.normalize(1.0);
+        var edgeLength:Float = E.length();
+        E.normalize();
                 
         //normal
         var n:Vector2 = VectorTools.GetPerpendicular(E);
@@ -388,9 +389,9 @@ class Body
         else
         {
             // point lies somewhere on the line segment.
-            var toP4:Vector4 = VectorTools.Vec4FromVec2(toP);
+            var toP4:Vector3 = VectorTools.Vec4FromVec2(toP);
 
-            var E4:Vector4 = VectorTools.Vec4FromVec2(E);
+            var E4:Vector3 = VectorTools.Vec4FromVec2(E);
 
             //dist = Math.Abs(Vector3.Cross(toP3, E3).Z);
             E4 = toP4.crossProduct(E4);
@@ -413,7 +414,7 @@ class Body
         for (i in 0...PointMasses.length)
         {
             var diff:Vector2 = VectorTools.Subtract(point, PointMasses[i].Position);
-            var tempLength:Float = diff.length;
+            var tempLength:Float = diff.length();
             if (tempLength < length)
             {
                 length = tempLength;
@@ -430,8 +431,8 @@ class Body
     {
         var R:Vector2 = VectorTools.Subtract(DerivedPos, point);
         
-        var Rv4:Vector4 = VectorTools.Vec4FromVec2(R);
-        var forcev4:Vector4 = VectorTools.Vec4FromVec2(force);
+        var Rv4:Vector3 = VectorTools.Vec4FromVec2(R);
+        var forcev4:Vector3 = VectorTools.Vec4FromVec2(force);
         var torqueF:Float = Rv4.crossProduct(forcev4).z;
         
         for (i in 0...PointMasses.length)
@@ -484,11 +485,11 @@ class Body
         for (i in 0...PointMasses.length)
         {
             var baseNorm:Vector2 = new Vector2(BaseShape.LocalVertices[i].x, BaseShape.LocalVertices[i].y);
-            baseNorm.normalize(1.0);
+            baseNorm.normalize();
 
             var curNorm:Vector2 = new Vector2(PointMasses[i].Position.x - DerivedPos.x,
                                             PointMasses[i].Position.y - DerivedPos.y);
-            curNorm.normalize(1.0);
+            curNorm.normalize();
 
             var dot:Float = VectorTools.Dot(baseNorm, curNorm);
                         

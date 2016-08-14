@@ -1,7 +1,8 @@
 package jellyPhysics;
 import haxe.Constraints.Function;
 import jellyPhysics.*;
-import lime.math.Vector2;
+import jellyPhysics.math.VectorTools;
+import jellyPhysics.math.Vector2;
 
 /**
  * ...

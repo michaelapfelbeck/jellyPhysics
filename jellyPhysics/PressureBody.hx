@@ -1,6 +1,7 @@
 package jellyPhysics;
 
-import lime.math.Vector2;
+import jellyPhysics.math.VectorTools;
+import jellyPhysics.math.Vector2;
 
 /**
  * ...
@@ -76,7 +77,7 @@ class PressureBody extends SpringBody
                 edge2N = VectorTools.GetPerpendicular(edge2N);
 
                 var norm:Vector2 = new Vector2(edge1N.x + edge2N.x, edge1N.y + edge2N.y);
-                norm.normalize(1.0);
+                norm.normalize();
 
                 var edgeL:Float = Math.sqrt((edge2N.x * edge2N.x) + (edge2N.y * edge2N.y));
 

@@ -1,6 +1,6 @@
 package jellyPhysics ;
 
-import lime.math.Vector2;
+import jellyPhysics.math.Vector2;
 
 /**
  * ...
