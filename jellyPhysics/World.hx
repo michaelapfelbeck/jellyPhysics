@@ -26,7 +26,7 @@ class World
     
     public var PhysicsIter:Int;
     
-    private var minFPS = 20.0;
+    private var minFPS = 40.0;
     public var MinFPS(get, null):Float;
     public function get_MinFPS(){
         return minFPS;
