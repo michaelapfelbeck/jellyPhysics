@@ -16,7 +16,6 @@ class Body
 {
     public var Label:String;
     public var UpdateDelegate:Function;
-    public var DelateDelegate:Function;
     public var CollisionCallback:Function;
     public var DeleteCallback:Function;
     

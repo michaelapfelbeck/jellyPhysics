@@ -28,6 +28,13 @@ class Vector2
         y += v.y;
         return this;
 	}
+	
+	public function subtract(v:Vector2) : Vector2
+	{
+		x -= v.x;
+        y -= v.y;
+        return this;
+	}
     
     public function normalize():Vector2{        
 		var length:Float = length();

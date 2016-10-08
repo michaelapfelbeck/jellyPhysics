@@ -204,6 +204,15 @@ class World
             collider.GetBody(i).ResetExternalForces();
         }
     }
+    
+    public function SetBodyDamping(float:Float) 
+    {
+        BodyDamping = float;
+        for (i in 0...NumberBodies){
+            var body:Body = GetBody(i);
+            body.VelocityDamping = float;
+        }
+    }
 
     private function AccumulateAndIntegrate(iterElapsed:Float):Void
     {

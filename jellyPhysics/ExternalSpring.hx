@@ -4,7 +4,7 @@ package jellyPhysics;
  * ...
  * @author Michael Apfelbeck
  */
-class ExtrernalSpring extends InternalSpring
+class ExternalSpring extends InternalSpring
 {
     public var BodyA:Body;
     public var BodyB:Body;
