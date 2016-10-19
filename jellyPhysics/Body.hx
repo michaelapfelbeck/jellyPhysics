@@ -125,9 +125,7 @@ class Body
                 
                 if (!IsStatic)
                 {
-                    p.x += PointMasses[i].Velocity.x * elapsed;
-                    p.y += PointMasses[i].Velocity.y * elapsed;
-                    BoundingBox.ExpandToInclude(p);
+                    BoundingBox.ExpandToInclude(VectorTools.Add(p, VectorTools.Multiply(PointMasses[i].Velocity, elapsed)));
                 }
             }
         }
@@ -561,6 +559,7 @@ class Body
         }
     }
     
+    private static var count:Int = 0;
     public function DampenVelocity(elapsed:Float)
     {
         if (IsStatic || IsAsleep){

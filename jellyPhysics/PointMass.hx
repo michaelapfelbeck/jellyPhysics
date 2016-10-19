@@ -27,15 +27,17 @@ class PointMass
     
     public function IntegrateForce(elapsed: Float):Void
     {
-        var elapMass:Float = elapsed / Mass;
+        if(Mass != Math.POSITIVE_INFINITY){
+            var elapMass:Float = elapsed / Mass;
 
-        Velocity.x += (Force.x * elapMass);
-        Velocity.y += (Force.y * elapMass);
+            Velocity.x += (Force.x * elapMass);
+            Velocity.y += (Force.y * elapMass);
 
-        Position.x += (Velocity.x * elapsed);
-        Position.y += (Velocity.y * elapsed);
-        
-        Force.x = 0;
-        Force.y = 0;        
+            Position.x += (Velocity.x * elapsed);
+            Position.y += (Velocity.y * elapsed);
+            
+            Force.x = 0;
+            Force.y = 0;
+        }
     }
 }
