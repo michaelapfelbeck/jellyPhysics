@@ -58,7 +58,7 @@ class World
                         worldPenetrationThreshhold:Float,
                         worldBounds: AABB)
     {
-        collider = new ArrayCollider(worldPenetrationThreshhold);
+        collider = getBodyCollider(worldPenetrationThreshhold);
         
         collisionList = new Array<BodyCollisionInfo>();
         bodyCounter = 0;
@@ -73,6 +73,11 @@ class World
         SetWorldLimits(worldBounds);
         
         penetrationThreshold = worldPenetrationThreshhold;
+    }
+    
+    public function getBodyCollider(penetrationThreshhold:Float) 
+    {
+        return new ArrayCollider(penetrationThreshhold);
     }
     
     public function SetWorldLimits(limits:AABB) : Void
@@ -182,6 +187,9 @@ class World
             }
             for (i in 0...deleteThese.length){
                 collider.Remove(deleteThese[i]);
+                if (deleteThese[i].DeleteCallback != null){
+                    deleteThese[i].DeleteCallback(deleteThese[i]);
+                }
             }
             deleteThese = null;
             

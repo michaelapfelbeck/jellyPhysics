@@ -60,14 +60,6 @@ class ArrayCollider implements ColliderBase
             for (j in (i + 1)...bodies.length){
                 var bodyA:Body = bodies[i];
                 var bodyB:Body = bodies[j];
-                if (null == bodyA)
-                {
-                    trace("wat!?");
-                }
-                if (null == bodyB)
-                {
-                    trace("wat!!");
-                }
                 
                 var boxA:AABB = bodyA.BoundingBox;
                 var boxB:AABB = bodyB.BoundingBox;
