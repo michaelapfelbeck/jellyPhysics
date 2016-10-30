@@ -75,7 +75,7 @@ class World
         penetrationThreshold = worldPenetrationThreshhold;
     }
     
-    public function getBodyCollider(penetrationThreshhold:Float) 
+    public function getBodyCollider(penetrationThreshhold:Float):ColliderBase
     {
         return new ArrayCollider(penetrationThreshhold);
     }

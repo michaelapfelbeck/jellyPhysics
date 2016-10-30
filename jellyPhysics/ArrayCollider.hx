@@ -84,10 +84,9 @@ class ArrayCollider implements ColliderBase
                     }
                 }
                 collisions = collisions.concat(bCollide);
-                //collisions = collisions.concat(Body.BodyCollide(bodyA, bodyB, penetrationThreshold));
-                //collisions = collisions.concat(Body.BodyCollide(bodyB, bodyA, penetrationThreshold));
             }
         }
+        //trace("collisions created: " + collisions.length);
         return collisions;
     }
     
