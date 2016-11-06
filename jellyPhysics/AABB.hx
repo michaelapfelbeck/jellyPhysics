@@ -108,7 +108,7 @@ class AABB
 
     public function ContainsX(x:Float):Bool
     {
-        return (UL.x <= X && LR.x >= X);
+        return (UL.x <= x && LR.x >= x);
     }
 
     public function ContainsY(y:Float):Bool
