@@ -69,20 +69,20 @@ class ArrayCollider implements ColliderBase
                 }
                 
                 var aCollide:Array<BodyCollisionInfo> = Body.BodyCollide(bodyA, bodyB, penetrationThreshold);
-                for (i in 0...aCollide.length){
+                /*for (i in 0...aCollide.length){
                     var info:BodyCollisionInfo = aCollide[i];
                     if (info == null || info.BodyA == null || info.BodyB == null || info.BodyAPointMass ==-1 || info.BodyBPointMassA ==-1 || info.BodyBPointMassB ==-1){
                         trace("what the hell broke?");
                     }
-                }
+                }*/
                 collisions = collisions.concat(aCollide);
                 var bCollide:Array<BodyCollisionInfo> = Body.BodyCollide(bodyB, bodyA, penetrationThreshold);       
-                for (i in 0...bCollide.length){
+                /*for (i in 0...bCollide.length){
                     var info:BodyCollisionInfo = bCollide[i];
                     if (info == null || info.BodyA == null || info.BodyB == null || info.BodyAPointMass ==-1 || info.BodyBPointMassA ==-1 || info.BodyBPointMassB ==-1){
                         trace("what the hell broke?");
                     }
-                }
+                }*/
                 collisions = collisions.concat(bCollide);
             }
         }
