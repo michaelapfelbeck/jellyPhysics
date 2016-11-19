@@ -41,6 +41,10 @@ class World
     private var BodyDamping:Float = .5;
     
     private var worldLimits:AABB;
+    public var WorldBounds(get, null):AABB;
+    public function get_WorldBounds():AABB{
+        return worldLimits;
+    }
     //used to give each body added to the physics world a unique id
     private var bodyCounter:Int;
     private var penetrationCount:Int;
