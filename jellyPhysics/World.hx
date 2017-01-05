@@ -166,6 +166,10 @@ class World
         return adjusted;
     }
     
+    public function internalAccumulator(elapsed:Float):Void{
+        
+    }
+    
     public function Update(elapsed:Float)
     {
         //stability hack
@@ -178,6 +182,7 @@ class World
         for (iter in 0...PhysicsIter){
             penetrationCount = 0;
             
+            internalAccumulator(iterElapsed);
             if (null != externalAccumulator){
                 externalAccumulator(iterElapsed);
             }
