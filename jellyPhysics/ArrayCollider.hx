@@ -61,6 +61,9 @@ class ArrayCollider implements ColliderBase
                 var bodyA:Body = bodies[i];
                 var bodyB:Body = bodies[j];
                 
+                if (bodyA.IsStatic && bodyB.IsStatic){
+                    continue;
+                }
                 var boxA:AABB = bodyA.BoundingBox;
                 var boxB:AABB = bodyB.BoundingBox;
                 

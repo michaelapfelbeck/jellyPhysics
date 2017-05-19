@@ -158,7 +158,7 @@ class World
         return null;
     }
     
-    function bracketFrameRate(elapsed:Float) 
+    private function bracketFrameRate(elapsed:Float) 
     {
         var adjusted:Float;
         adjusted = Math.min(elapsed, 1.0 / minFPS);
@@ -304,8 +304,11 @@ class World
             var relDot:Float = VectorTools.Dot(relVel, info.Normal);
 
             // collision filter!
+            //trace("blah");
             var materialPair:MaterialPair = materialPairs.Get(info.BodyA.Material,
                                                                 info.BodyB.Material);
+
+            //trace("merp");
             if (!materialPair.Collide){
                 continue;
             }
@@ -418,5 +421,27 @@ class World
                 }
             }
         }
+    }
+    
+    public function BodiesThatIntersect(test:Body) 
+    {
+        var intersect:List<Body> = new List<Body>();
+        
+        for (i in 0...collider.Count){
+            var body:Body = collider.GetBody(i);
+            if (test.BodyNumber == body.BodyNumber){
+                continue;
+            }
+            
+            if (!test.BoundingBox.Intersects(body.BoundingBox)){
+                continue;
+            }
+            var collide:Array<BodyCollisionInfo>;
+            collide = Body.BodyCollide(test, body, 0.0);
+            if (collide.length > 0){
+                intersect.add(body);
+            }
+        }
+        return intersect;
     }
 }

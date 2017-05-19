@@ -45,7 +45,8 @@ class MaterialMatrix
             throw "Out of bounds.";
             return null;
         }
-        
+        var materialArray:Array<MaterialPair> = materials[i];
+
         return materials[i][j];
     }
     
