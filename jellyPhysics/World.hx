@@ -444,4 +444,21 @@ class World
         }
         return intersect;
     }
+    
+    public function BodiesThatIntersectAABB(test:Body) 
+    {
+        var intersect:List<Body> = new List<Body>();
+        
+        for (i in 0...collider.Count){
+            var body:Body = collider.GetBody(i);
+            if (test.BodyNumber == body.BodyNumber){
+                continue;
+            }
+            
+            if (test.BoundingBox.Intersects(body.BoundingBox)){
+                intersect.add(body);
+            }
+        }
+        return intersect;
+    }
 }
