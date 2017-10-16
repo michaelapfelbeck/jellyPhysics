@@ -38,7 +38,19 @@ class World
         return maxFPS;
     }
     
-    private var BodyDamping:Float = .5;
+    private var bodyDamping:Float = .5;
+    public var BodyDamping(get, set):Float;
+    public function get_BodyDamping():Float{
+        return bodyDamping;
+    }
+    public function set_BodyDamping(value:Float):Float {
+        bodyDamping = value;
+        for (i in 0...NumberBodies){
+            var body:Body = GetBody(i);
+            body.VelocityDamping = value;
+        }
+        return bodyDamping;
+    }
     
     private var worldLimits:AABB;
     public var WorldBounds(get, null):AABB;
@@ -92,7 +104,7 @@ class World
     public function AddBody(body:Body):Int
     {
         if (!collider.Contains(body)){
-            body.VelocityDamping = BodyDamping;
+            body.VelocityDamping = bodyDamping;
             body.BodyNumber = bodyCounter;
             bodyCounter++;
             collider.Add(body);
@@ -109,6 +121,7 @@ class World
             if (body.DeleteCallback != null){
                 body.DeleteCallback(body);
             }
+            body = null;
         }
     }
     
@@ -174,7 +187,7 @@ class World
     {
         //stability hack
         //If the framerate drops too low or too high the system looses
-        //stability, so keep updates bracketed inside a 20-120 FPS range
+        //stability, so keep updates bracketed inside a 40-120 FPS range
         var physicsElapsed:Float = bracketFrameRate(elapsed);
         
         var iterElapsed = physicsElapsed / PhysicsIter;
@@ -219,15 +232,6 @@ class World
         
         for (i in 0...collider.Count){
             collider.GetBody(i).ResetExternalForces();
-        }
-    }
-    
-    public function SetBodyDamping(float:Float) 
-    {
-        BodyDamping = float;
-        for (i in 0...NumberBodies){
-            var body:Body = GetBody(i);
-            body.VelocityDamping = float;
         }
     }
 

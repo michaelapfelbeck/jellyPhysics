@@ -2,11 +2,11 @@ package jellyPhysics;
 
 import haxe.Constraints.Function;
 import jellyPhysics.ClosedShape;
+import jellyPhysics.PointMassRef;
 import jellyPhysics.PointOnEdge;
-import jellyPhysics.math.VectorTools;
 import jellyPhysics.math.Vector2;
 import jellyPhysics.math.Vector3;
-import jellyPhysics.PointMassRef;
+import jellyPhysics.math.VectorTools;
 
 /**
  * ...
